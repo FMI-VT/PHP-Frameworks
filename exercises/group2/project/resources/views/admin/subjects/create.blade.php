@@ -16,6 +16,10 @@
                             <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
 
+                        @if ($errors->first('title'))
+                            <div class="alert alert-danger">{{ $errors->first('title') }}</div>
+                        @endif
+
                         <form method="post" action="{{url('admin/subjects')}}">
                             <div class="form-group row">
                                 {{csrf_field()}}

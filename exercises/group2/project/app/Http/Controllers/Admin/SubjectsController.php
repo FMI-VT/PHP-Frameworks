@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Subjects;
+use Illuminate\Support\Facades\Validator;
 
 class SubjectsController extends Controller
 {
@@ -40,12 +41,27 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $subject = new Subjects([
-            'title' => $request->get('title')
-        ]);
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+        $rules = array(
+            'title'       => 'required|min:8',
+        );
+        $validator = Validator::make($request->all(), $rules);
 
-        $subject->save();
-        return redirect('admin/subjects');
+        // process the login
+        if ($validator->fails()) {
+            return redirect('admin/subjects/create')
+                ->withErrors($validator)
+                ->withInput($request->all());
+        } else {
+            $subject = new Subjects([
+                'title' => $request->get('title')
+            ]);
+
+            $subject->save();
+            return redirect('admin/subjects');
+        }
+
     }
 
     /**
