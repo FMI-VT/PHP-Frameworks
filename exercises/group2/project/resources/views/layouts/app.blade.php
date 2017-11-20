@@ -36,6 +36,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        @if (Auth::check())
+                            <li><a href="{{ url('admin/subjects') }}"><i class="fa fa-list"></i> <span>Subjects</span></a></li>
+                        @endif
                         &nbsp;
                     </ul>
 

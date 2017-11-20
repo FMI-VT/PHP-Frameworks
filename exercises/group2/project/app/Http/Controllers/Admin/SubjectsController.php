@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Subjects;
 
 class SubjectsController extends Controller
 {
@@ -13,7 +15,11 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
+        // get all the subjects
+        $subjects = Subjects::all();
+
+
+        return view('admin.subjects.index') ->with('subjects', $subjects);
     }
 
     /**
@@ -23,7 +29,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.subjects.create');
     }
 
     /**
@@ -34,7 +40,12 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subject = new Subjects([
+            'title' => $request->get('title')
+        ]);
+
+        $subject->save();
+        return redirect('admin/subjects');
     }
 
     /**
@@ -56,7 +67,9 @@ class SubjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Subjects::find($id);
+
+        return view('admin.subjects.edit', compact('subject','id'));
     }
 
     /**
@@ -68,7 +81,10 @@ class SubjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject = Subjects::find($id);
+        $subject->title = $request->get('title');
+        $subject->save();
+        return redirect('/admin/subjects')->with('success', 'Task was successful!');
     }
 
     /**
@@ -79,6 +95,9 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subject = Subjects::find($id);
+        $subject->delete();
+
+        return redirect('/admin/subjects')->with('success', 'Task was successful!');
     }
 }
