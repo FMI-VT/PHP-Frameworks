@@ -38,6 +38,7 @@
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
                             <li><a href="{{ url('admin/subjects') }}"><i class="fa fa-list"></i> <span>Subjects</span></a></li>
+                            <li><a href="{{ url('admin/tutors') }}"><i class="fa fa-list"></i> <span>Tutors</span></a></li>
                         @endif
                         &nbsp;
                     </ul>
