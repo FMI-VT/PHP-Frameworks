@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    // Backpack\MenuCRUD
+
     Route::resource('subjects', 'SubjectsController');
     Route::resource('tutors', 'TutorsController');
 });
