@@ -29,7 +29,7 @@
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->title }}</td>
                                     <td>
-                                        <a class="btn btn-small btn-info" href="{{ URL::to('admin/tutors/' . $value->id . '/edit') }}">Edit subject</a>
+                                        <a class="btn btn-small btn-info" href="{{ URL::to('admin/tutors/' . $value->id . '/edit') }}">Edit tutor</a>
 
                                         <form action="{{action('Admin\TutorsController@destroy', $value->id )}}" method="post">
                                             {{csrf_field()}}

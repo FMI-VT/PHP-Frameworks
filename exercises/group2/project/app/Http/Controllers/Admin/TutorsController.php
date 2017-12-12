@@ -18,7 +18,7 @@ class TutorsController extends Controller
      */
     public function index()
     {
-        $allTutors = Tutors::paginate(5);
+        $allTutors = Tutors::paginate(1);
 
         return view('admin.tutors.index')->with('allTutors', $allTutors);
         //
