@@ -39,6 +39,7 @@
                         @if (Auth::check())
                             <li><a href="{{ url('admin/subjects') }}"><i class="fa fa-list"></i> <span>Subjects</span></a></li>
                             <li><a href="{{ url('admin/tutors') }}"><i class="fa fa-list"></i> <span>Tutors</span></a></li>
+                            <li><a href="{{ url('admin/images') }}"><i class="fa fa-list"></i> <span>Images</span></a></li>
                         @endif
                         &nbsp;
                     </ul>

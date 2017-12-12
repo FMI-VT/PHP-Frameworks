@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 
     Route::resource('subjects', 'SubjectsController');
     Route::resource('tutors', 'TutorsController');
+    Route::resource('images', 'ImagesController');
 });
 
 
