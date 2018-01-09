@@ -6,8 +6,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Images
-                        <a href="{{ URL::to('admin/images/create') }}" class="pull-right">Add Image</a>
+                        Samples
+                        <a href="{{ URL::to('admin/samples/create') }}" class="pull-right">Add Sample</a>
                     </div>
 
                     <div class="panel-body">
@@ -21,20 +21,20 @@
                             <tr>
                                 <td>ID</td>
                                 <td>Name</td>
-                                <td>Image</td>
+                                <td>Sample</td>
                                 <td>Actions</td>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($images as $key => $value)
+                            @foreach($samples as $key => $value)
                                 <tr>
                                     <td>{{ $value->id }}</td>
-                                    <td>{{ $value->imageDescription }}</td>
-                                    <td><img src="<?php echo asset('imagecache/small/' . $value->fileName);?>" alt="image" /></td>
+                                    <td>{{ $value->sampleDescription }}</td>
+                                    <td><img src="<?php echo asset('imagecache/small/' . $value->sampleName);?>" alt="image" /></td>
                                     <!-- we will also add show, edit, and delete buttons -->
                                     <td>
 
-                                        <form action="{{action('Admin\ImagesController@destroy', $value->id )}}" method="post">
+                                        <form action="{{action('Admin\SamplesController@destroy', $value->id )}}" method="post">
                                             {{csrf_field()}}
                                             <input name="_method" type="hidden" value="DELETE">
                                             <button class="btn btn-danger" type="submit">Delete</button>
