@@ -35,8 +35,6 @@ return array(
         'storage/sample-images',
         public_path('upload'),
         public_path('images'),
-        public_path('sample'),
-        public_path('sample-images')
     ),
 
     /*
@@ -59,6 +57,8 @@ return array(
         'small' => 'Intervention\Image\Templates\Small',
         'medium' => 'Intervention\Image\Templates\Medium',
         'large' => 'Intervention\Image\Templates\Large',
+        'bar' => 'App\Filters\CustomImageSampleFilter',
+        'nano' => 'App\Filters\NanoFilter',
     ),
 
     /*
